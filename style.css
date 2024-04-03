@@ -1,0 +1,134 @@
+@font-face {
+		font-family: NotoSerifJP;
+		src: url("font/NotoSerifJP-ExtraLight.otf") format("opentype");
+}
+.background-overlay{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: url(""); /* Initially empty image */
+		background-size: cover;
+		background-position: center;
+		opacity: 0;
+		z-index: -1; /* Ensure it's behind other elements */		
+}
+
+/* for the background-overlay img to be tinted*/
+.background-tint {
+		background-color: rgba(200,100,0,.5);
+		background-blend-mode: multiply;
+}
+
+div#clickCover {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        opacity: 1;
+        z-index: 9999; /* Ensure it's on top of everything */
+        transition: opacity 1s ease;
+		pointer-events:auto;
+		
+        }
+		
+.disable-pointer-events {
+    pointer-events: none;
+}
+
+/* Container which holds a clickable image */
+.container1{
+		background:black;
+		position:relative;
+		overflow:hidden;
+		width:400px;
+		height:400px;
+		z-index:1;
+		cursor:pointer;
+		margin-left:auto;
+		margin-right:auto;
+}
+/* making <a> tag to work properly in <div> */
+.container1 a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+	z-index: 2; /* Ensure the link is clickable */
+}
+
+/* Making image to scale up inside container
+ when you hover over it with mouse*/
+.container1::after{
+		content: '';
+		position: absolute;
+		left:0;
+		top:0;
+		width:100%;
+		height:100%;
+		background: #e5e5e5;
+		opacity:0;
+		transition: 1s ease all;
+}
+.container1:hover img{
+		transform: scale(1.1);
+}
+
+.container1:hover::after{
+		opacity:0.075;
+}
+
+.container1:hover + .background-overlay{
+		background-image: url(attr(data-background)); 
+}
+
+
+.img1{
+		transition: 1s ease all;
+		object-fit: initial; /* previous value was 'cover', for the purpose of swappableimg was set to initial */
+		background-position: center;
+		background-size: cover;
+		width:100%;
+		border:none;
+		
+}
+
+/* Styling a link color behavior and decorations */
+.link1:link{
+		color:#E178C5;
+		text-decoration: none;
+}
+.link1:hover{
+		color:#F7418F; 
+		text-decoration: none;
+}
+.link1:visited{
+		color:#E178C5;
+		text-decoration: none;
+}
+.link1:active{
+		color:#F7418F;
+		text-decoration: none;
+}
+
+/* Horizontal line beneath the link text */
+.hr1{
+		margin-top:-0px;
+		width:400px;
+}
+/* Setting up Gradient for background 
+	blend-mode with image is not working dunno why*/
+.backgroundbody{
+		background: linear-gradient(#A25772, #304D30);
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-attachment: fixed;
+
+}
+
+
